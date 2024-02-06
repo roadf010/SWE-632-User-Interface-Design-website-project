@@ -1,5 +1,9 @@
 <!DOCTYPE html>
    <html lang="en">
+    <div class="header">
+      <h1>Physics repository</h1>
+      <p>Use the search bar to find equations, constants, or solve for values!</p>
+    </div> 
       <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,8 +15,7 @@
         <div class="form-container">
                     <input id="search" type="search" placeholder="search..." data-search/>
         </div>
-        <div class = "math-output" math-data>math output</div>
-        <p id="math-out"></p>
+        <div class = "math-output" math-data>math output: <p id="math-out">0</p></div>
         <div class="equation-cards" data-EQ-cards></div>
           <template data-EQ-template>
             <div class="card">
