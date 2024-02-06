@@ -34,7 +34,8 @@ searchInput.addEventListener("input", (e) => {
     var splitval = value.split(" ")
     if (splitval.length == 3 && "calculate".includes(splitval[0])){
         var result = calc_phys_val(splitval[1], splitval[2])
-        document.getElementById("math-data").write = result
+        document.getElementById("math-out").innerHTML = result
+        console.log(result)
     }
     else{
         equations.forEach(EQ =>{
