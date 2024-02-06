@@ -1,0 +1,47 @@
+body {
+    background-color: lightblue;
+  }
+  
+.form-container {
+    text-align: center;
+  }
+.results-container{
+    display: flex;
+    flex-direction: column;
+}
+.math-output{
+    text-align: center;
+    margin-bottom: .25rem;
+    margin: auto;
+    width: 320px;
+    height: 50px;
+    border: 1px solid black;
+    background-color: grey;
+}
+input{
+    font-size: 1rem;
+}
+
+.equation-cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.card {
+    border: 1px solid black;
+    background-color: aquamarine;
+    padding: .5rem;
+}
+
+.card > .header{
+    margin-bottom: .25rem;
+}
+
+.card > .body {
+    font-size: .8rem;
+    color:green
+}
+
+.hide {
+    display: none;
+}
