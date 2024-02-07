@@ -42,7 +42,9 @@ input{
 
 .card > .body {
     font-size: .8rem;
-    color:green
+    color:rgb(0, 0, 0)
+    
+    
 }
 
 .hide {

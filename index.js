@@ -8,10 +8,45 @@ function calc_phys_val(type, equation){
     if (equation == null){
         return 0
     }
-    if ("mass-energy".includes(type)){
+    if ("addition".includes(type.toLowerCase())){
+        eqparts = equation.split("+")
+         sum = 0
+        eqparts.forEach(number =>{
+            if (number!= NaN){
+                sum = sum+parseFloat(number)
+            }
+        })
+        return sum
+    }
+    else if ("multiplication".includes(type.toLowerCase()) || "multiply".includes(type.toLowerCase())){
+        eqparts = equation.split("*")
+        sum = 1
+        eqparts.forEach(number =>{
+            if (number!= NaN){
+                sum = sum*parseFloat(number)   
+            }
+        })
+        return sum
+    }
+    else if ("subtraction".includes(type.toLowerCase())){
+        eqparts = equation.split("-")
+        sum = eqparts[0]
+        for (let i = 1; i < eqparts.length; i++){
+            sum = sum-eqparts[i]
+        }
+        return sum
+    } 
+    else if ("division".includes(type) || "divide".includes(type)){
+        eqparts = equation.split("/")
+        if (parseFloat(eqparts[1]) == 0 || parseFloat(eqparts[1]) == NaN){
+            return 0
+        }
+        return (parseFloat(eqparts[0])/parseFloat(eqparts[1]))
+    }
+    else if ("mass-energy".includes(type.toLowerCase()) || "joules".includes(type.toLowerCase())){
         return (parseFloat(equation)*(299793458)**2)
     }
-    else if ("motion".includes(type)){
+    else if ("equation of motion".includes(type.toLowerCase()) ||"force".includes(type.toLowerCase())){
         eqparts = equation.split("*")
         return(parseFloat(eqparts[0])*parseFloat(eqparts[1]))
     }
@@ -21,6 +56,12 @@ function calc_phys_val(type, equation){
             return 0
         }
         return (parseFloat(eqparts[0])/parseFloat(eqparts[1]))
+    }
+    else if ("frequency".includes(type) || "Hertz".includes(type)){
+        if (parseFloat(equation) == 0 || parseFloat(equation) == NaN){
+            return 0
+        }
+        return (1/parseFloat(equation))
     }
     else{
         return 0
@@ -43,7 +84,7 @@ searchInput.addEventListener("input", (e) => {
                 isVisible = EQ.name.toLowerCase().includes(value) || EQ.units.toLowerCase().includes(value) || EQ.type.toLowerCase().includes(value) || EQ.field.toLowerCase().includes(value) || EQ.results.toLowerCase().includes(value)
             }
             else{
-                isVisible = false
+                isVisible = EQ.name.toLowerCase().includes(value)
                 console.log("entering loops")
                 console.log(splitval.length)
                 for (let i = 0; i < splitval.length; i++){
