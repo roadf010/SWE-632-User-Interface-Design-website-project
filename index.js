@@ -75,6 +75,9 @@ searchInput.addEventListener("input", (e) => {
     var splitval = value.split(" ")
     if (splitval.length == 3 && "calculate".includes(splitval[0])){
         var result = calc_phys_val(splitval[1], splitval[2])
+        if (result == NaN){
+            result = 0
+        }
         document.getElementById("math-out").innerHTML = result
         console.log(result)
     }
@@ -106,6 +109,7 @@ searchInput.addEventListener("input", (e) => {
                 console.log("exiting loops")
             }
                 EQ.element.classList.toggle("hide", !isVisible)
+                document.getElementById("math-out").innerHTML = 0
         })
     }
 })
