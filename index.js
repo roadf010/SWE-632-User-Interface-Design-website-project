@@ -3,7 +3,7 @@ const eqCardData = document.querySelector("[data-EQ-cards]")
 const searchInput = document.querySelector("[data-search]")
 
 let equations = []
-
+let calculations = []
 function calc_phys_val(type, equation){
     if (equation == null){
         return 0
