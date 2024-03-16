@@ -44,7 +44,8 @@ input{
 
 .card > .body {
     font-size: .8rem;
-    color:rgb(0, 0, 0)
+    color:rgb(0, 0, 0);
+    margin: .25rem .25rem;
     
     
 }
