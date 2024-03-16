@@ -74,6 +74,9 @@ searchInput.addEventListener("input", (e) => {
     var isVisible = true
     var splitval = value.split(" ")
     if (splitval.length == 3 && "calculate".includes(splitval[0])){
+        calculations.forEach(calc =>{
+            calc.element.classList.toggle("hide", false)
+        })
         var result = calc_phys_val(splitval[1], splitval[2])
         if (result == NaN){
             result = 0
@@ -111,6 +114,9 @@ searchInput.addEventListener("input", (e) => {
                 EQ.element.classList.toggle("hide", !isVisible)
                 document.getElementById("math-out").innerHTML = 0
         })
+        calculations.forEach(calc =>{
+            calc.element.classList.toggle("hide", true)
+        })
     }
 })
 fetch("./EqDat.json").then((res) => res.json()).then(data =>{
@@ -131,7 +137,7 @@ fetch("./EqDat.json").then((res) => res.json()).then(data =>{
     });
 });
 fetch("./calculation_content.json").then((res) => res.json()).then(data =>{
-    equations = data.map(element => {
+    calculations = data.map(element => {
         const card = eqCardTemplate.content.cloneNode(true).children[0]
         const header = card.querySelector("[data-header]")
         const image = card.querySelector("[data-image]")
