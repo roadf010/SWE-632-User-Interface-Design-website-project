@@ -73,10 +73,12 @@ searchInput.addEventListener("input", (e) => {
     const value = e.target.value.toLowerCase()
     var isVisible = true
     var splitval = value.split(" ")
-    if (splitval.length == 3 && "calculate".includes(splitval[0])){
+    if("calculate".includes(splitval[0])){
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", false)
         })
+    }
+    if (splitval.length == 3 && "calculate".includes(splitval[0])){
         var result = calc_phys_val(splitval[1], splitval[2])
         if (result == NaN){
             result = 0
@@ -153,3 +155,6 @@ fetch("./calculation_content.json").then((res) => res.json()).then(data =>{
         return{ name : element.name, units: element.units, field: element.field, results: element.variables.result, type: element.type, element: card}
     });
 });
+calculations.forEach(calc =>{
+    calc.element.classList.toggle("hide", true)
+})
