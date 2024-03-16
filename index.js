@@ -130,3 +130,20 @@ fetch("./EqDat.json").then((res) => res.json()).then(data =>{
         return{ name : element.name, units: element.units, field: element.field, results: element.variables.result, type: element.type, element: card}
     });
 });
+fetch("./calculation_content.json").then((res) => res.json()).then(data =>{
+    equations = data.map(element => {
+        const card = eqCardTemplate.content.cloneNode(true).children[0]
+        const header = card.querySelector("[data-header]")
+        const image = card.querySelector("[data-image]")
+        const units = card.querySelector("[data-units]")
+        const body = card.querySelector("[data-body]")
+        header.textContent = element.name
+        image.textContent = element.image
+        units.textContent = "Units: "
+        units.textContent += element.units
+        body.textContent = element.description
+        
+        eqCardData.append(card)
+        return{ name : element.name, units: element.units, field: element.field, results: element.variables.result, type: element.type, element: card}
+    });
+});

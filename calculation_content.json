@@ -1,0 +1,84 @@
+[
+    {
+        "name": "addition",
+        "image": "a+b+...",
+        "description": "mathematical addition",
+        "type": "equation",
+        "field": "calculation",
+        "units": "any",
+        "variables": {
+            "result": "any"
+        }
+    },
+    {
+        "name": "subtraction",
+        "image": "a-b-...",
+        "description": "mathematical subtraction",
+        "type": "equation",
+        "field": "calculation",
+        "units": "any",
+        "variables": {
+            "result": "any"
+        }
+    },
+    {
+        "name": "multiplication",
+        "image": "a*b*...",
+        "description": "mathematical multiplication",
+        "type": "equation",
+        "field": "calculation",
+        "units": "any",
+        "variables": {
+            "result": "any"
+        }
+    },
+    {
+        "name": "division",
+        "image": "a/b",
+        "description": "mathematical division",
+        "type": "equation",
+        "field": "calculation",
+        "units": "any",
+        "variables": {
+            "result": "any"
+        }
+    },
+    {
+        "name": "mass-energy",
+        "image": "E = m*c^2",
+        "description": "Energy to mass equation",
+        "type": "equation",
+        "field": "calculation",
+        "units": "Joules",
+        "variables": {
+            "result": "Joules",
+            "variable": "Kilograms",
+            "constant": "Meters per second"
+        }
+    },
+    {
+        "name": "Equation of motion",
+        "image": "F = m*a",
+        "description": "Newton's equation for force",
+        "type": "equation",
+        "field": "calculation",
+        "units": "Newtons",
+        "variables": {
+            "result": "Force",
+            "Variable1": "mass",
+            "variable2" : "acceleration"
+        }
+    },
+    {
+        "name": "Frequency",
+        "image": "1/s",
+        "description": "frequency relation, type in seconds to recieve corresponding frequency",
+        "type": "equation",
+        "field": "calculation",
+        "units": "Hz",
+        "variables": {
+            "result": "Frequency",
+            "Variable1": "seconds"
+        }
+    }
+]
