@@ -72,12 +72,12 @@ function calc_phys_val(type, equation){
 searchInput.addEventListener("input", (e) => {
     const value = e.target.value.toLowerCase()
     var isVisible = true
-    var splitval = value.split(" ")
     if("calculate".includes(splitval)){
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", false)
         })
     }
+    var splitval = value.split(" ")
     if (splitval.length == 3 && "calculate".includes(splitval[0])){
         var result = calc_phys_val(splitval[1], splitval[2])
         if (result == NaN || result == null){
