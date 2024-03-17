@@ -6,7 +6,7 @@ let equations = []
 let calculations = []
 function calc_phys_val(type, equation){
     if (equation == null){
-        return null,false
+        return [null,false]
     }
     if ("addition".includes(type.toLowerCase())){
         eqparts = equation.split("+")
@@ -16,7 +16,7 @@ function calc_phys_val(type, equation){
                 sum = sum+parseFloat(number)
             }
         })
-        return sum, true
+        return [sum, true]
     }
     else if ("multiplication".includes(type.toLowerCase()) || "multiply".includes(type.toLowerCase())){
         eqparts = equation.split("*")
@@ -26,7 +26,7 @@ function calc_phys_val(type, equation){
                 sum = sum*parseFloat(number)   
             }
         })
-        return sum, true
+        return [sum, true]
     }
     else if ("subtraction".includes(type.toLowerCase())){
         eqparts = equation.split("-")
@@ -34,37 +34,37 @@ function calc_phys_val(type, equation){
         for (let i = 1; i < eqparts.length; i++){
             sum = sum-eqparts[i]
         }
-        return sum, true
+        return [sum, true]
     } 
     else if ("division".includes(type) || "divide".includes(type)){
         eqparts = equation.split("/")
         if (parseFloat(eqparts[1]) == 0 || parseFloat(eqparts[1]) == NaN){
-            return null,false
+            return [null,false]
         }
-        return (parseFloat(eqparts[0])/parseFloat(eqparts[1]), true)
+        return [parseFloat(eqparts[0])/parseFloat(eqparts[1]), true]
     }
     else if ("mass-energy".includes(type.toLowerCase()) || "joules".includes(type.toLowerCase())){
-        return (parseFloat(equation)*(299793458)**2, true)
+        return [parseFloat(equation)*(299793458)**2, true]
     }
     else if ("equation of motion".includes(type.toLowerCase()) ||"force".includes(type.toLowerCase())){
         eqparts = equation.split("*")
-        return(parseFloat(eqparts[0])*parseFloat(eqparts[1]), true)
+        return [parseFloat(eqparts[0])*parseFloat(eqparts[1]), true]
     }
     else if ("mass-density".includes(type)){
         eqparts = equation.split("/")
         if (parseFloat(eqparts[1]) == 0 || parseFloat(eqparts[1]) == NaN){
-            return null,false
+            return [null,false]
         }
-        return (parseFloat(eqparts[0])/parseFloat(eqparts[1]), true)
+        return [parseFloat(eqparts[0])/parseFloat(eqparts[1]), true]
     }
     else if ("frequency".includes(type) || "Hertz".includes(type)){
         if (parseFloat(equation) == 0 || parseFloat(equation) == NaN){
-            return null,false
+            return [null,false]
         }
-        return (1/parseFloat(equation), true)
+        return [1/parseFloat(equation), true]
     }
     else{
-        return null,false
+        return [null,false]
     }
 
 }
@@ -79,9 +79,8 @@ searchInput.addEventListener("input", (e) => {
     }
     var splitval = value.split(" ")
     if (splitval.length == 3 && "calculate".includes(splitval[0])){
-        var result;
-        var valid = true;
-        result, valid = calc_phys_val(splitval[1], splitval[2])
+        var [result, valid] = [0, true]
+        [result, valid] = calc_phys_val(splitval[1], splitval[2])
         if (!valid){
             result = "error"
             document.getElementById("math-out").style.color = "red"
