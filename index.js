@@ -4,19 +4,21 @@ const searchInput = document.querySelector("[data-search]")
 
 let equations = []
 let calculations = []
+let valid = true
 function calc_phys_val(type, equation){
     if (equation == null){
-        return [null,false]
+        valid = false
+        return null
     }
     if ("addition".includes(type.toLowerCase())){
         eqparts = equation.split("+")
-         sum = 0
+        sum = 0
         eqparts.forEach(number =>{
             if (number!= NaN){
                 sum = sum+parseFloat(number)
             }
         })
-        return [sum, true]
+        return sum
     }
     else if ("multiplication".includes(type.toLowerCase()) || "multiply".includes(type.toLowerCase())){
         eqparts = equation.split("*")
@@ -26,7 +28,7 @@ function calc_phys_val(type, equation){
                 sum = sum*parseFloat(number)   
             }
         })
-        return [sum, true]
+        return sum
     }
     else if ("subtraction".includes(type.toLowerCase())){
         eqparts = equation.split("-")
@@ -34,37 +36,41 @@ function calc_phys_val(type, equation){
         for (let i = 1; i < eqparts.length; i++){
             sum = sum-eqparts[i]
         }
-        return [sum, true]
+        return sum
     } 
     else if ("division".includes(type) || "divide".includes(type)){
         eqparts = equation.split("/")
         if (parseFloat(eqparts[1]) == 0 || parseFloat(eqparts[1]) == NaN){
-            return [null,false]
+            valid = false
+            return null
         }
-        return [parseFloat(eqparts[0])/parseFloat(eqparts[1]), true]
+        return (parseFloat(eqparts[0])/parseFloat(eqparts[1]))
     }
     else if ("mass-energy".includes(type.toLowerCase()) || "joules".includes(type.toLowerCase())){
-        return [parseFloat(equation)*(299793458)**2, true]
+        return (parseFloat(equation)*(299793458)**2)
     }
     else if ("equation of motion".includes(type.toLowerCase()) ||"force".includes(type.toLowerCase())){
         eqparts = equation.split("*")
-        return [parseFloat(eqparts[0])*parseFloat(eqparts[1]), true]
+        return(parseFloat(eqparts[0])*parseFloat(eqparts[1]))
     }
     else if ("mass-density".includes(type)){
         eqparts = equation.split("/")
         if (parseFloat(eqparts[1]) == 0 || parseFloat(eqparts[1]) == NaN){
-            return [null,false]
+            valid = false
+            return null
         }
-        return [parseFloat(eqparts[0])/parseFloat(eqparts[1]), true]
+        return (parseFloat(eqparts[0])/parseFloat(eqparts[1]))
     }
     else if ("frequency".includes(type) || "Hertz".includes(type)){
         if (parseFloat(equation) == 0 || parseFloat(equation) == NaN){
-            return [null,false]
+            valid = false
+            return null
         }
-        return [1/parseFloat(equation), true]
+        return (1/parseFloat(equation), true)
     }
     else{
-        return [null,false]
+        valid = false
+        return null
     }
 
 }
@@ -79,8 +85,9 @@ searchInput.addEventListener("input", (e) => {
     }
     var splitval = value.split(" ")
     if (splitval.length == 3 && "calculate".includes(splitval[0])){
-        var [result, valid] = [0, true]
-        [result, valid] = calc_phys_val(splitval[1], splitval[2])
+        var result;
+        valid = true;
+        result = calc_phys_val(splitval[1], splitval[2])
         if (!valid){
             result = "error"
             document.getElementById("math-out").style.color = "red"
