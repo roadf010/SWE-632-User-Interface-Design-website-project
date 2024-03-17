@@ -12,7 +12,7 @@ function calc_phys_val(type, equation){
     }
     if ("addition".includes(type.toLowerCase())){
         eqparts = equation.split("+")
-        if (parseFloat(eqparts[1]) == 0 || parseFloat(eqparts[1]) == NaN){
+        if (eqparts.includes(NaN) || eqparts.includes(null)){
             valid = false
             return null
         }
@@ -26,6 +26,10 @@ function calc_phys_val(type, equation){
     }
     else if ("multiplication".includes(type.toLowerCase()) || "multiply".includes(type.toLowerCase())){
         eqparts = equation.split("*")
+        if (eqparts.includes(NaN) || eqparts.includes(null)){
+            valid = false
+            return null
+        }
         sum = 1
         eqparts.forEach(number =>{
             if (number!= NaN){
@@ -36,6 +40,10 @@ function calc_phys_val(type, equation){
     }
     else if ("subtraction".includes(type.toLowerCase())){
         eqparts = equation.split("-")
+        if (eqparts.includes(NaN) || eqparts.includes(null)){
+            valid = false
+            return null
+        }
         sum = eqparts[0]
         for (let i = 1; i < eqparts.length; i++){
             sum = sum-eqparts[i]
@@ -82,12 +90,12 @@ function calc_phys_val(type, equation){
 searchInput.addEventListener("input", (e) => {
     const value = e.target.value.toLowerCase()
     var isVisible = true
+    var splitval = value.split(" ")
     if("calculate".includes(splitval)){
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", false)
         })
     }
-    var splitval = value.split(" ")
     if (splitval.length == 3 && "calculate".includes(splitval[0])){
         var result;
         valid = true;
