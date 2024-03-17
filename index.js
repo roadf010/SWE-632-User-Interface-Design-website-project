@@ -154,7 +154,6 @@ fetch("./calculation_content.json").then((res) => res.json()).then(data =>{
         eqCardData.append(card)
         return{ name : element.name, units: element.units, field: element.field, results: element.variables.result, type: element.type, element: card}
     });
-});
-calculations.forEach(calc =>{
+}).then(calculations.forEach(calc =>{
     calc.element.classList.toggle("hide", true)
-})
+}));
