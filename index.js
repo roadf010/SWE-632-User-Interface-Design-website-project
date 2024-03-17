@@ -158,3 +158,4 @@ fetch("./calculation_content.json").then((res) => res.json()).then(data =>{
 calculations.forEach(calc =>{
     calc.element.classList.toggle("hide", true)
 })
+document.getElementById("math-out").innerHTML = -10
