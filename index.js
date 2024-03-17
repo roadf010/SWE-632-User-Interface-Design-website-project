@@ -137,7 +137,7 @@ fetch("./EqDat.json").then((res) => res.json()).then(data =>{
         eqCardData.append(card)
         return{ name : element.name, units: element.units, field: element.field, results: element.variables.result, type: element.type, element: card}
     });
-});
+})
 fetch("./calculation_content.json").then((res) => res.json()).then(data =>{
     calculations = data.map(element => {
         const card = eqCardTemplate.content.cloneNode(true).children[0]
@@ -154,6 +154,7 @@ fetch("./calculation_content.json").then((res) => res.json()).then(data =>{
         eqCardData.append(card)
         return{ name : element.name, units: element.units, field: element.field, results: element.variables.result, type: element.type, element: card}
     });
-}).then(calculations.forEach(calc =>{
+})
+calculations.forEach(calc =>{
     calc.element.classList.toggle("hide", true)
-}));
+})
