@@ -73,14 +73,14 @@ searchInput.addEventListener("input", (e) => {
     const value = e.target.value.toLowerCase()
     var isVisible = true
     var splitval = value.split(" ")
-    if("calculate".includes(splitval[0])){
+    if("calculate".includes(splitval)){
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", false)
         })
     }
     if (splitval.length == 3 && "calculate".includes(splitval[0])){
         var result = calc_phys_val(splitval[1], splitval[2])
-        if (result == NaN){
+        if (result == NaN || result == null){
             result = "error"
             document.getElementById("math-out").style.color = "red"
             document.getElementById("math-out").innerHTML = result
@@ -120,7 +120,7 @@ searchInput.addEventListener("input", (e) => {
             }
                 EQ.element.classList.toggle("hide", !isVisible)
                 document.getElementById("math-out").innerHTML = 0
-                document.getElementById("math-out").style.color = "grey"
+                document.getElementById("math-out").style.color = "black"
         })
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", true)
