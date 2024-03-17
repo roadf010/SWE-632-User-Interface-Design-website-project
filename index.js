@@ -81,9 +81,14 @@ searchInput.addEventListener("input", (e) => {
     if (splitval.length == 3 && "calculate".includes(splitval[0])){
         var result = calc_phys_val(splitval[1], splitval[2])
         if (result == NaN){
-            result = 0
+            result = "error"
+            document.getElementById("math-out").style.color = "red"
+            document.getElementById("math-out").innerHTML = result
         }
-        document.getElementById("math-out").innerHTML = result
+        else{
+            document.getElementById("math-out").style.color = "green"
+            document.getElementById("math-out").innerHTML = result
+        }
         console.log(result)
     }
     else{
@@ -115,6 +120,7 @@ searchInput.addEventListener("input", (e) => {
             }
                 EQ.element.classList.toggle("hide", !isVisible)
                 document.getElementById("math-out").innerHTML = 0
+                document.getElementById("math-out").style.color = "grey"
         })
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", true)
@@ -154,8 +160,7 @@ fetch("./calculation_content.json").then((res) => res.json()).then(data =>{
         eqCardData.append(card)
         return{ name : element.name, units: element.units, field: element.field, results: element.variables.result, type: element.type, element: card}
     });
-})
-calculations.forEach(calc =>{
-    calc.element.classList.toggle("hide", true)
-})
-document.getElementById("math-out").innerHTML = -10
+    calculations.forEach(calc =>{
+        calc.element.classList.toggle("hide", true)
+    })
+});
