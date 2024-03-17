@@ -12,7 +12,7 @@ function calc_phys_val(type, equation){
     }
     if ("addition".includes(type.toLowerCase())){
         eqparts = equation.split("+")
-        if (eqparts.includes(NaN) || eqparts.includes(null)){
+        if (eqparts.includes(NaN) || eqparts.includes(null) || eqparts.includes("")){
             valid = false
             return null
         }
