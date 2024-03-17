@@ -12,6 +12,10 @@ function calc_phys_val(type, equation){
     }
     if ("addition".includes(type.toLowerCase())){
         eqparts = equation.split("+")
+        if (parseFloat(eqparts[1]) == 0 || parseFloat(eqparts[1]) == NaN){
+            valid = false
+            return null
+        }
         sum = 0
         eqparts.forEach(number =>{
             if (number!= NaN){
@@ -62,7 +66,7 @@ function calc_phys_val(type, equation){
         return (parseFloat(eqparts[0])/parseFloat(eqparts[1]))
     }
     else if ("frequency".includes(type) || "Hertz".includes(type)){
-        if (parseFloat(equation) == 0 || parseFloat(equation) == NaN){
+        if (parseFloat(equation) == 0 || equation == NaN){
             valid = false
             return null
         }
