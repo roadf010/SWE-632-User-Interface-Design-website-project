@@ -6,7 +6,7 @@ let equations = []
 let calculations = []
 function calc_phys_val(type, equation){
     if (equation == null){
-        return 0
+        return null
     }
     if ("addition".includes(type.toLowerCase())){
         eqparts = equation.split("+")
@@ -39,7 +39,7 @@ function calc_phys_val(type, equation){
     else if ("division".includes(type) || "divide".includes(type)){
         eqparts = equation.split("/")
         if (parseFloat(eqparts[1]) == 0 || parseFloat(eqparts[1]) == NaN){
-            return 0
+            return null
         }
         return (parseFloat(eqparts[0])/parseFloat(eqparts[1]))
     }
@@ -53,18 +53,18 @@ function calc_phys_val(type, equation){
     else if ("mass-density".includes(type)){
         eqparts = equation.split("/")
         if (parseFloat(eqparts[1]) == 0 || parseFloat(eqparts[1]) == NaN){
-            return 0
+            return null
         }
         return (parseFloat(eqparts[0])/parseFloat(eqparts[1]))
     }
     else if ("frequency".includes(type) || "Hertz".includes(type)){
         if (parseFloat(equation) == 0 || parseFloat(equation) == NaN){
-            return 0
+            return null
         }
         return (1/parseFloat(equation))
     }
     else{
-        return 0
+        return null
     }
 
 }
