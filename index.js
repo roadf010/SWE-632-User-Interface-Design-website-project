@@ -18,51 +18,79 @@ function calc_phys_val(type, equation){
         }
         sum = 0
         eqparts.forEach(number =>{
-            if (number!= NaN){
+            if (parseFloat(number)!= NaN){
                 sum = sum+parseFloat(number)
+            }
+            else{
+                valid = false
+                return null
             }
         })
         return sum
     }
     else if ("multiplication".includes(type.toLowerCase()) || "multiply".includes(type.toLowerCase())){
         eqparts = equation.split("*")
-        if (eqparts.includes(NaN) || eqparts.includes(null)){
+        if (eqparts.includes(NaN) || eqparts.includes(null) || eqparts.includes("")){
             valid = false
             return null
         }
         sum = 1
         eqparts.forEach(number =>{
-            if (number!= NaN){
+            if (parseFloat(number) != NaN){
                 sum = sum*parseFloat(number)   
+            }
+            else{
+                valid = false
+                return null
             }
         })
         return sum
     }
     else if ("subtraction".includes(type.toLowerCase())){
         eqparts = equation.split("-")
-        if (eqparts.includes(NaN) || eqparts.includes(null)){
+        if (eqparts.includes(NaN) || eqparts.includes(null) || eqparts.includes("")){
             valid = false
             return null
         }
         sum = eqparts[0]
-        for (let i = 1; i < eqparts.length; i++){
-            sum = sum-eqparts[i]
-        }
+        var isfirst = true
+        eqparts.forEach(number =>{
+            if (parseFloat(number)!= NaN){
+                if (isfirst){
+                    isfirst = false
+                }
+                else{
+                    sum = sum-parseFloat(number)
+                }
+            }
+            else{
+                valid = false
+                return null
+            }
+        })
         return sum
     } 
     else if ("division".includes(type) || "divide".includes(type)){
         eqparts = equation.split("/")
-        if (parseFloat(eqparts[1]) == 0 || parseFloat(eqparts[1]) == NaN){
+        if (parseFloat(eqparts[1]) == 0 || parseFloat(eqparts[1]) == NaN ||  parseFloat(eqparts[0]) == NaN ){
             valid = false
             return null
         }
         return (parseFloat(eqparts[0])/parseFloat(eqparts[1]))
     }
     else if ("mass-energy".includes(type.toLowerCase()) || "joules".includes(type.toLowerCase())){
+        if(parseFloat(equation) == NaN){
+            valid = false
+            return null
+        }
         return (parseFloat(equation)*(299793458)**2)
     }
     else if ("equation of motion".includes(type.toLowerCase()) ||"force".includes(type.toLowerCase())){
         eqparts = equation.split("*")
+        if (eqparts.includes(NaN) || eqparts.includes(null) || eqparts.includes("")){
+            valid = false
+            return null
+        }
         return(parseFloat(eqparts[0])*parseFloat(eqparts[1]))
     }
     else if ("mass-density".includes(type)){
@@ -74,11 +102,11 @@ function calc_phys_val(type, equation){
         return (parseFloat(eqparts[0])/parseFloat(eqparts[1]))
     }
     else if ("frequency".includes(type) || "Hertz".includes(type)){
-        if (parseFloat(equation) == 0 || equation == NaN){
+        if (parseFloat(equation) == 0 || equation == NaN || eqparts.includes("") ||  parseFloat(eqparts[0]) == NaN){
             valid = false
             return null
         }
-        return (1/parseFloat(equation), true)
+        return (1/parseFloat(equation))
     }
     else{
         valid = false
