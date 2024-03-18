@@ -118,12 +118,12 @@ function calc_phys_val(type, equation){
 searchInput.addEventListener("input", (e) => {
     const value = e.target.value.toLowerCase()
     var isVisible = true
-    if("calculate".includes(value)){
+    var splitval = value.split(" ")
+    if("calculate".includes(value) || "calculate".includes(splitval)){
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", false)
         })
     }
-    var splitval = value.split(" ")
     if (splitval.length == 3 && "calculate".includes(splitval[0])){
         var result;
         valid = true;
@@ -170,7 +170,7 @@ searchInput.addEventListener("input", (e) => {
                 document.getElementById("math-out").innerHTML = 0
                 document.getElementById("math-out").style.color = "black"
         })
-        if ("calculate".includes(splitval) == false){
+        if ("calculate".includes(splitval) == false && "calculate".includes(value) == false){
             calculations.forEach(calc =>{
                 calc.element.classList.toggle("hide", true)
             })
