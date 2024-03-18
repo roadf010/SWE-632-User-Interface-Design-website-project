@@ -28,7 +28,7 @@ input{
 
 .equation-cards{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
 .card {
@@ -39,13 +39,13 @@ input{
 }
 
 .card > .header{
-    margin-bottom: .25rem;
+    margin: .5rem;
 }
 
 .card > .body {
     font-size: .8rem;
     color:rgb(0, 0, 0);
-    margin: .25rem .25rem;
+    margin: .5rem .5rem;
     
     
 }
