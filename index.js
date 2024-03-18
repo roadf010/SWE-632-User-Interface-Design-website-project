@@ -170,9 +170,11 @@ searchInput.addEventListener("input", (e) => {
                 document.getElementById("math-out").innerHTML = 0
                 document.getElementById("math-out").style.color = "black"
         })
-        calculations.forEach(calc =>{
-            calc.element.classList.toggle("hide", true)
-        })
+        if ("calculate".includes(splitval) == false){
+            calculations.forEach(calc =>{
+                calc.element.classList.toggle("hide", true)
+            })
+        }
     }
 })
 fetch("./EqDat.json").then((res) => res.json()).then(data =>{
