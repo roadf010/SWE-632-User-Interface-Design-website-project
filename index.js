@@ -170,7 +170,7 @@ searchInput.addEventListener("input", (e) => {
                 document.getElementById("math-out").innerHTML = 0
                 document.getElementById("math-out").style.color = "black"
         })
-        if ("calculate".includes(splitval) == false && "calculate".includes(value) == false){
+        if (value == "" || value == null){
             calculations.forEach(calc =>{
                 calc.element.classList.toggle("hide", true)
             })
