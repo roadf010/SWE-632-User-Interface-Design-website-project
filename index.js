@@ -102,7 +102,7 @@ function calc_phys_val(type, equation){
         return (parseFloat(eqparts[0])/parseFloat(eqparts[1]))
     }
     else if ("frequency".includes(type) || "Hertz".includes(type)){
-        if (parseFloat(equation) == 0 || equation == NaN || eqparts.includes("") ||  parseFloat(eqparts[0]) == NaN){
+        if (parseFloat(equation) == 0 || equation == NaN || equation.includes("")){
             valid = false
             return null
         }
