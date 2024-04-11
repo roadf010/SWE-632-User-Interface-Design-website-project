@@ -116,16 +116,16 @@ function calc_phys_val(type, equation){
 }
 
 function check_visible(input, card){
-    if ("type" in input.toLowerCase()){
+    if (input.toLowerCase().includes("type")){
         return (input.toLowerCase().includes(card.type.toLowerCase()) || card.type.toLowerCase().includes(input.toLowerCase()))
     }
-    else if ("field" in input.toLowerCase()){
+    else if (input.toLowerCase().includes("field")){
         return (input.toLowerCase().includes(card.field.toLowerCase()) || card.field.toLowerCase().includes(input.toLowerCase()))
     }
-    else if ("units" in input.toLowserCase()){
+    else if (input.toLowerCase().includes("units")){
         return (input.toLowerCase().includes(card.units.toLowerCase()) || card.units.toLowerCase().includes(input.toLowerCase()))
     }
-    else if ("result" in input.toLowerCase()){
+    else if (input.toLowerCase().includes("result")){
         return (input.toLowerCase().includes(card.variables.result.toLowerCase()) || card.variables.result.toLowerCase().includes(input.toLowerCase()))
     }
     else{
