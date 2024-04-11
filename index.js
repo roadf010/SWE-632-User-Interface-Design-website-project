@@ -159,34 +159,10 @@ searchInput.addEventListener("input", (e) => {
     }
     else{
         equations.forEach(EQ =>{
-            if (splitval.length == 1){
-                isVisible = check_visible(value, EQ)
-            }
-            else{
-                isVisible = value in EQ.name.toLowerCase()
-                console.log("entering loops")
-                console.log(splitval.length)
-                for (let i = 0; i < splitval.length; i++){
-                    if (isVisible == true){
-                        console.log("breaking first")
-                        break
-                    }
-                    for (let j = i+1; j < splitval.length; j++){
-                        console.log("testing")
-                        console.log(splitval[0])
-                        console.log(splitval[1])
-                        isVisible = check_visible(value, EQ)
-                        if (isVisible == true){
-                            console.log("breaking second")
-                            break
-                        } 
-                    }
-                }
-                console.log("exiting loops")
-            }
-                EQ.element.classList.toggle("hide", !isVisible)
-                document.getElementById("math-out").innerHTML = 0
-                document.getElementById("math-out").style.color = "black"
+            isVisible = check_visible(value, EQ)
+            EQ.element.classList.toggle("hide", !isVisible)
+            document.getElementById("math-out").innerHTML = 0
+            document.getElementById("math-out").style.color = "black"
         })
         if (value == "" || value == null){
             calculations.forEach(calc =>{
