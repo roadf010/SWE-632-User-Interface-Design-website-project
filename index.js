@@ -122,7 +122,7 @@ function check_visible(input, card){
     else if ("field" in input.toLowerCase()){
         return (input.toLowerCase().includes(card.field.toLowerCase()) || card.field.toLowerCase().includes(input.toLowerCase()))
     }
-    else if ("units" in input.toLowerCase()){
+    else if ("units" in input.toLowserCase()){
         return (input.toLowerCase().includes(card.units.toLowerCase()) || card.units.toLowerCase().includes(input.toLowerCase()))
     }
     else if ("result" in input.toLowerCase()){
