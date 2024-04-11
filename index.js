@@ -117,19 +117,19 @@ function calc_phys_val(type, equation){
 
 function check_visible(input, card){
     if ("type" in input.toLowerCase()){
-        return (input.toLowerCase() in card.type.toLowerCase() || card.type.toLowerCase() in input.toLowerCase())
+        return (input.toLowerCase().includes(card.type.toLowerCase()) || card.type.toLowerCase().includes(input.toLowerCase()))
     }
     else if ("field" in input.toLowerCase()){
-        return (input.toLowerCase() in card.field.toLowerCase() || card.field.toLowerCase() in input.toLowerCase())
+        return (input.toLowerCase().includes(card.field.toLowerCase()) || card.field.toLowerCase().includes(input.toLowerCase()))
     }
     else if ("units" in input.toLowerCase()){
-        return (input.toLowerCase() in card.units.toLowerCase() || card.units.toLowerCase() in input.toLowerCase())
+        return (input.toLowerCase().includes(card.units.toLowerCase()) || card.units.toLowerCase().includes(input.toLowerCase()))
     }
     else if ("result" in input.toLowerCase()){
-        return (input.toLowerCase() in card.variables.result.toLowerCase() || card.variables.result.toLowerCase() in input.toLowerCase())
+        return (input.toLowerCase().includes(card.variables.result.toLowerCase()) || card.variables.result.toLowerCase().includes(input.toLowerCase()))
     }
     else{
-        return (input.toLowerCase() in card.variables.result.toLowerCase() || card.variables.result.toLowerCase() in input.toLowerCase()) || (input.toLowerCase() in card.units.toLowerCase() || card.units.toLowerCase() in input.toLowerCase()) || (input.toLowerCase() in card.field.toLowerCase() || card.field.toLowerCase() in input.toLowerCase()) || (input.toLowerCase() in card.type.toLowerCase() || card.type.toLowerCase() in input.toLowerCase())
+        return (input.toLowerCase().includes(card.variables.result.toLowerCase()) || card.variables.result.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.units.toLowerCase()) || card.units.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.field.toLowerCase()) || card.field.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.type.toLowerCase()) || card.type.toLowerCase().includes(input.toLowerCase()))
     }
 }
 
