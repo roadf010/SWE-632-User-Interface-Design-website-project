@@ -115,6 +115,24 @@ function calc_phys_val(type, equation){
 
 }
 
+function check_visible(input, card){
+    if ("type" in input.toLowerCase()){
+        return (input.toLowerCase() in card.type.toLowerCase() || card.type.toLowerCase() in input.toLowerCase())
+    }
+    else if ("field" in input.toLowerCase()){
+        return (input.toLowerCase() in card.field.toLowerCase() || card.field.toLowerCase() in input.toLowerCase())
+    }
+    else if ("units" in input.toLowerCase()){
+        return (input.toLowerCase() in card.units.toLowerCase() || card.units.toLowerCase() in input.toLowerCase())
+    }
+    else if ("result" in input.toLowerCase()){
+        return (input.toLowerCase() in card.variables.result.toLowerCase() || card.variables.result.toLowerCase() in input.toLowerCase())
+    }
+    else{
+        return (input.toLowerCase() in card.variables.result.toLowerCase() || card.variables.result.toLowerCase() in input.toLowerCase()) || (input.toLowerCase() in card.units.toLowerCase() || card.units.toLowerCase() in input.toLowerCase()) || (input.toLowerCase() in card.field.toLowerCase() || card.field.toLowerCase() in input.toLowerCase()) || (input.toLowerCase() in card.type.toLowerCase() || card.type.toLowerCase() in input.toLowerCase())
+    }
+}
+
 searchInput.addEventListener("input", (e) => {
     const value = e.target.value.toLowerCase()
     var isVisible = true
@@ -142,7 +160,7 @@ searchInput.addEventListener("input", (e) => {
     else{
         equations.forEach(EQ =>{
             if (splitval.length == 1){
-                isVisible = EQ.name.toLowerCase().includes(value) || EQ.units.toLowerCase().includes(value) || EQ.type.toLowerCase().includes(value) || EQ.field.toLowerCase().includes(value) || EQ.results.toLowerCase().includes(value)
+                isVisible = check_visible(value, EQ)
             }
             else{
                 isVisible = value in EQ.name.toLowerCase()
@@ -157,7 +175,7 @@ searchInput.addEventListener("input", (e) => {
                         console.log("testing")
                         console.log(splitval[0])
                         console.log(splitval[1])
-                        isVisible = (EQ.field.toLowerCase().includes(splitval[0]) && EQ.type.toLowerCase().includes(splitval[1])) || (EQ.type.toLowerCase().includes(splitval[0]) && EQ.field.toLowerCase().includes(splitval[1])) || (EQ.units.toLowerCase().includes(splitval[0]) && EQ.type.toLowerCase().includes(splitval[1])) || (EQ.type.toLowerCase().includes(splitval[0]) && EQ.units.toLowerCase().includes(splitval[1])) || (EQ.field.toLowerCase().includes(splitval[0]) && EQ.units.toLowerCase().includes(splitval[1])) || (EQ.units.toLowerCase().includes(splitval[0]) && EQ.field.toLowerCase().includes(splitval[1])) 
+                        isVisible = check_visible(value, EQ)
                         if (isVisible == true){
                             console.log("breaking second")
                             break
