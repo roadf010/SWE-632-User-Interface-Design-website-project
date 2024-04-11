@@ -142,10 +142,10 @@ searchInput.addEventListener("input", (e) => {
     else{
         equations.forEach(EQ =>{
             if (splitval.length == 1){
-                isVisible = EQ.name.toLowerCase().includes(value) || EQ.units.toLowerCase().includes(value) || EQ.type.toLowerCase().includes(value) || EQ.field.toLowerCase().includes(value) || EQ.results.toLowerCase().includes(value)
+                isVisible = value in EQ.name.toLowerCase() || value in EQ.units.toLowerCase() || value in EQ.type.toLowerCase() || value in EQ.field.toLowerCase() || value in EQ.results.toLowerCase()
             }
             else{
-                isVisible = EQ.name.toLowerCase().includes(value)
+                isVisible = value in EQ.name.toLowerCase()
                 console.log("entering loops")
                 console.log(splitval.length)
                 for (let i = 0; i < splitval.length; i++){
@@ -157,7 +157,7 @@ searchInput.addEventListener("input", (e) => {
                         console.log("testing")
                         console.log(splitval[0])
                         console.log(splitval[1])
-                        isVisible = (EQ.field.toLowerCase().includes(splitval[0]) && EQ.type.toLowerCase().includes(splitval[1])) || (EQ.type.toLowerCase().includes(splitval[0]) && EQ.field.toLowerCase().includes(splitval[1])) || (EQ.units.toLowerCase().includes(splitval[0]) && EQ.type.toLowerCase().includes(splitval[1])) || (EQ.type.toLowerCase().includes(splitval[0]) && EQ.units.toLowerCase().includes(splitval[1])) || (EQ.field.toLowerCase().includes(splitval[0]) && EQ.units.toLowerCase().includes(splitval[1])) || (EQ.units.toLowerCase().includes(splitval[0]) && EQ.field.toLowerCase().includes(splitval[1])) 
+                        isVisible = ((splitval[0] in EQ.field.toLowerCase()) && (splitval[1] in EQ.type.toLowerCase())) || (splitval[0] in EQ.type.toLowerCase() && splitval[1] in EQ.field.toLowerCase()) || (splitval[0] in EQ.units.toLowerCase() && splitval[1] in EQ.type.toLowerCase()) || (splitval[0] in EQ.type.toLowerCase() && splitval[1] in EQ.units.toLowerCase()) || (splitval[0] in EQ.field.toLowerCase() && splitval[1] in EQ.units.toLowerCase()) || (splitval[0] in EQ.units.toLowerCase() && splitval[1] in EQ.field.toLowerCase()) 
                         if (isVisible == true){
                             console.log("breaking second")
                             break
