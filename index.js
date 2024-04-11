@@ -125,11 +125,8 @@ function check_visible(input, card){
     else if (input.toLowerCase().includes("units")){
         return (input.toLowerCase().includes(card.units.toLowerCase()) || card.units.toLowerCase().includes(input.toLowerCase()))
     }
-    else if (input.toLowerCase().includes("result")){
-        return (input.toLowerCase().includes(card.variables.result.toLowerCase()) || card.variables.result.toLowerCase().includes(input.toLowerCase()))
-    }
     else{
-        return (input.toLowerCase().includes(card.variables.result.toLowerCase()) || card.variables.result.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.units.toLowerCase()) || card.units.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.field.toLowerCase()) || card.field.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.type.toLowerCase()) || card.type.toLowerCase().includes(input.toLowerCase()))
+        return (input.toLowerCase().includes(card.units.toLowerCase()) || card.units.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.field.toLowerCase()) || card.field.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.type.toLowerCase()) || card.type.toLowerCase().includes(input.toLowerCase()))
     }
 }
 
