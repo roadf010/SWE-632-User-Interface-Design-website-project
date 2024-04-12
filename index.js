@@ -5,108 +5,88 @@ const searchInput = document.querySelector("[data-search]")
 let equations = []
 let calculations = []
 let valid = true
-function calc_phys_val(type, equation){
-    if (equation == null){
+function calc_phys_val(input){
+    let to_solve = ""
+    sum = 1
+    if (input == null){
         valid = false
         return null
     }
-    if ("addition".includes(type.toLowerCase())){
-        eqparts = equation.split("+")
-        if (eqparts.includes(NaN) || eqparts.includes(null) || eqparts.includes("")){
-            valid = false
-            return null
-        }
-        sum = 0
-        eqparts.forEach(number =>{
-            if (parseFloat(number)!= NaN){
-                sum = sum+parseFloat(number)
-            }
-            else{
-                valid = false
-                return null
-            }
-        })
-        return sum
-    }
-    else if ("multiplication".includes(type.toLowerCase()) || "multiply".includes(type.toLowerCase())){
-        eqparts = equation.split("*")
-        if (eqparts.includes(NaN) || eqparts.includes(null) || eqparts.includes("")){
-            valid = false
-            return null
-        }
-        sum = 1
-        eqparts.forEach(number =>{
-            if (parseFloat(number) != NaN){
-                sum = sum*parseFloat(number)   
-            }
-            else{
-                valid = false
-                return null
-            }
-        })
-        return sum
-    }
-    else if ("subtraction".includes(type.toLowerCase())){
-        eqparts = equation.split("-")
-        if (eqparts.includes(NaN) || eqparts.includes(null) || eqparts.includes("")){
-            valid = false
-            return null
-        }
-        sum = eqparts[0]
-        var isfirst = true
-        eqparts.forEach(number =>{
-            if (parseFloat(number)!= NaN){
-                if (isfirst){
-                    isfirst = false
+    input_parts = input.split(" ")
+    if (input_parts.len() == 1){
+        to_solve = input
+        if (to_solve.includes("+")){
+            sum = 0
+            to_solve = to_solve.split("+")
+            to_solve.foreach(part=>{
+                if(parseFloat(part) != NaN){
+                    sum = sum + part
                 }
-                else{
-                    sum = sum-parseFloat(number)
+            })
+            return sum
+        }
+        else if (to_solve.includes("-")){
+            sum = 0
+            to_solve = to_solve.split("-")
+            to_solve.foreach(part=>{
+                if(parseFloat(part) != NaN){
+                    sum = sum - part
                 }
-            }
-            else{
+            })
+            return sum
+        }
+        else if (to_solve.includes("*")){
+            to_solve = to_solve.split("*")
+            to_solve.foreach(part=>{
+                if(parseFloat(part) != NaN){
+                    sum = sum * part
+                }
+            })
+            return sum
+        }
+        else if (to_solve.includes("/")){
+            to_solve = to_solve.split("/")
+            if (to_solve[1] == 0){
                 valid = false
                 return null
             }
-        })
-        return sum
-    } 
-    else if ("division".includes(type) || "divide".includes(type)){
-        eqparts = equation.split("/")
-        if (parseFloat(eqparts[1]) == 0 || parseFloat(eqparts[1]) == NaN ||  parseFloat(eqparts[0]) == NaN ){
+            return to_solve[0]/to_solve[1]
+        }
+        else if (to_solve.includes("^")){
+            to_solve = to_solve.split("^")
+            return to_solve[0]**to_solve[1]
+        }
+
+    }
+    else if ("mass-energy".includes(input.toLowerCase()) || "joules".includes(input.toLowerCase()) || input.toLowerCase().includes("mass-energy") || input.toLowerCase().includes("joules")){
+        if(parseFloat(input_parts) == NaN){
             valid = false
             return null
         }
-        return (parseFloat(eqparts[0])/parseFloat(eqparts[1]))
+        return ((parseFloat(input_parts)*(299793458)**2).toString() + " J")
     }
-    else if ("mass-energy".includes(type.toLowerCase()) || "joules".includes(type.toLowerCase())){
-        if(parseFloat(equation) == NaN){
-            valid = false
-            return null
-        }
-        return (parseFloat(equation)*(299793458)**2)
-    }
-    else if ("equation of motion".includes(type.toLowerCase()) ||"force".includes(type.toLowerCase())){
-        eqparts = equation.split("*")
+    else if ("equation of motion".includes(input.toLowerCase()) ||"force".includes(input.toLowerCase()) || input.toLowerCase().includes("equation of motion") ||input.toLowerCase().includes("force")){
+        eqparts = input_parts.split("*")
         if (eqparts.includes(NaN) || eqparts.includes(null) || eqparts.includes("")){
             valid = false
             return null
         }
-        return(parseFloat(eqparts[0])*parseFloat(eqparts[1]))
+        return((parseFloat(eqparts[0])*parseFloat(eqparts[1])).toString() + " N")
     }
-    else if ("mass-density".includes(type)){
-        eqparts = equation.split("/")
+    else if ("mass-density".includes(input) || input.toLowerCase().includes("mass-density")){
+        eqparts = input_parts.split("/")
         if (parseFloat(eqparts[1]) == 0 || parseFloat(eqparts[1]) == NaN){
             valid = false
             return null
         }
-        return (parseFloat(eqparts[0])/parseFloat(eqparts[1]))
+        return ((parseFloat(eqparts[0])/parseFloat(eqparts[1])).toString() + " KgM^(-3)")
     }
-    else if ("frequency".includes(type) || "Hertz".includes(type)){
-        if (parseFloat(equation) == 0 || equation == NaN){
+    else if ("frequency".includes(input) || "Hertz".includes(input) || input.toLowerCase().includes("frequency") || input.toLowerCase().includes("Hertz")){
+        if (parseFloat(input_parts) == 0 || input_parts == NaN){
             valid = false
             return null
         }
-        return (1/parseFloat(equation))
+        return ((1/parseFloat(input_parts)).toString() + " Hz")
     }
     else{
         valid = false
@@ -119,21 +99,21 @@ function check_visible(input, card){
     console.log("scanning input")
     visible = false
     searched = false
-    if (input.toLowerCase().includes("type")){
+    if (input.toLowerCase().includes("type") || "type". includes(input.toLowerCase())){
         searched = true
         console.log("scanning type")
         console.log(input.toLowerCase().includes(card.type.toLowerCase()))
         console.log(card.type.toLowerCase().includes(input.toLowerCase()))
         visible = (input.toLowerCase().includes(card.type.toLowerCase()) || card.type.toLowerCase().includes(input.toLowerCase()))
     }
-    if (input.toLowerCase().includes("field")){
+    if (input.toLowerCase().includes("field") || "field". includes(input.toLowerCase())){
         searched = true
         console.log("scanning field")
         console.log(input.toLowerCase().includes(card.field.toLowerCase()))
         console.log(card.field.toLowerCase().includes(input.toLowerCase()))
         visible = (input.toLowerCase().includes(card.field.toLowerCase()) || card.field.toLowerCase().includes(input.toLowerCase()))
     }
-    if (input.toLowerCase().includes("unit")){
+    if (input.toLowerCase().includes("unit") || "field". includes(input.toLowerCase())){
         searched = true
         console.log("scanning units")
         console.log(input.toLowerCase().includes(card.units.toLowerCase()))
@@ -151,15 +131,26 @@ searchInput.addEventListener("input", (e) => {
     const value = e.target.value.toLowerCase()
     var isVisible = true
     var splitval = value.split(" ")
-    if("calculate".includes(value) || "calculate".includes(splitval)){
+
+    equations.forEach(EQ =>{
+        isVisible = check_visible(value, EQ)
+        EQ.element.classList.toggle("hide", !isVisible)
+        document.getElementById("math-out").innerHTML = 0
+        document.getElementById("math-out").style.color = "black"
+    })
+    if (value == "" || value == null || !(value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^"))){
+        calculations.forEach(calc =>{
+            calc.element.classList.toggle("hide", true)
+        })
+    } 
+    else if (value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^")){
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", false)
+            
         })
-    }
-    if (splitval.length == 3 && "calculate".includes(splitval[0])){
         var result;
         valid = true;
-        result = calc_phys_val(splitval[1], splitval[2])
+        result = calc_phys_val(value)
         if (!valid){
             result = "error"
             document.getElementById("math-out").style.color = "red"
@@ -170,19 +161,6 @@ searchInput.addEventListener("input", (e) => {
             document.getElementById("math-out").innerHTML = result
         }
         console.log(result)
-    }
-    else{
-        equations.forEach(EQ =>{
-            isVisible = check_visible(value, EQ)
-            EQ.element.classList.toggle("hide", !isVisible)
-            document.getElementById("math-out").innerHTML = 0
-            document.getElementById("math-out").style.color = "black"
-        })
-        if (value == "" || value == null){
-            calculations.forEach(calc =>{
-                calc.element.classList.toggle("hide", true)
-            })
-        }
     }
 })
 fetch("./EqDat.json").then((res) => res.json()).then(data =>{
