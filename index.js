@@ -27,12 +27,13 @@ function calc_phys_val(input){
             return sum
         }
         else if (to_solve.includes("-")){
-            sum = NaN
+            isfirst = true
             to_solve = to_solve.split("-")
             to_solve.forEach(part=>{
                 if(parseFloat(part) != NaN && part != "" && part != null){
-                    if (sum == NaN){
+                    if (isfirst){
                         sum = parseFloat(part)
+                        isfirst = false
                     }
                     else{
                     sum = sum - parseFloat(part)
