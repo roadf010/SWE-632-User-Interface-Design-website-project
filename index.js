@@ -75,7 +75,7 @@ function calc_phys_val(input){
                 valid = false
                 return null
             }
-            return ((parseFloat(input_parts)*(299793458)**2).toString() + " J")
+            return ((parseFloat(eqparts[0])*(299793458)**2).toString() + " J")
         }
     }
     else if ("motion".includes(input.toLowerCase()) || input.toLowerCase().includes("motion")  || "equation of motion".includes(input.toLowerCase()) || "force".includes(input.toLowerCase()) || input.toLowerCase().includes("equation of motion") || input.toLowerCase().includes("force")){
@@ -105,7 +105,7 @@ function calc_phys_val(input){
                 valid = false
                 return null
             }
-            return ((1/parseFloat(input_parts)).toString() + " Hz")
+            return ((1/parseFloat(eqparts[0])).toString() + " Hz")
         }
     }
     else{
