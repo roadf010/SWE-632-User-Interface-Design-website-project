@@ -118,19 +118,19 @@ function calc_phys_val(type, equation){
 function check_visible(input, card){
     console.log("scanning input")
     visible = false
-    if (input.toLowerCase().includes("type")){
+    if (input.toLowerCase().includes("type") && !visible){
         console.log("scanning type")
         console.log(input.toLowerCase().includes(card.type.toLowerCase()))
         console.log(card.type.toLowerCase().includes(input.toLowerCase()))
         visible = (input.toLowerCase().includes(card.type.toLowerCase()) || card.type.toLowerCase().includes(input.toLowerCase()))
     }
-    if (input.toLowerCase().includes("field")){
+    if (input.toLowerCase().includes("field") && !visible){
         console.log("scanning field")
         console.log(input.toLowerCase().includes(card.field.toLowerCase()))
         console.log(card.field.toLowerCase().includes(input.toLowerCase()))
         visible = (input.toLowerCase().includes(card.field.toLowerCase()) || card.field.toLowerCase().includes(input.toLowerCase()))
     }
-    if (input.toLowerCase().includes("unit")){
+    if (input.toLowerCase().includes("unit") && !visible){
         console.log("scanning units")
         console.log(input.toLowerCase().includes(card.units.toLowerCase()))
         console.log(card.units.toLowerCase().includes(input.toLowerCase()))
