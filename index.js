@@ -13,6 +13,7 @@ function calc_phys_val(input){
         return null
     }
     input_parts = input.split(" ")
+    console.log(input_parts)
     if (input_parts.length == 1){
         to_solve = input
         if (to_solve.includes("+")){
