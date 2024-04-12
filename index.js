@@ -69,7 +69,7 @@ function calc_phys_val(input){
 
     }
     else if ("mass energy".includes(input.toLowerCase()) || "joules".includes(input.toLowerCase()) || input.toLowerCase().includes("mass energy") || input.toLowerCase().includes("joules")){
-        if (input_parts.length == 2){
+        if (input_parts.length == 2 || input_parts.length == 3){
             eqparts = [input_parts[input_parts.length-1]]
             if(parseFloat(eqparts[0]) == NaN){
                 valid = false
@@ -79,7 +79,7 @@ function calc_phys_val(input){
         }
     }
     else if ("motion".includes(input.toLowerCase()) || input.toLowerCase().includes("motion")  || "equation of motion".includes(input.toLowerCase()) || "force".includes(input.toLowerCase()) || input.toLowerCase().includes("equation of motion") || input.toLowerCase().includes("force")){
-        if (input_parts.length == 3){
+        if (input_parts.length == 3 || input_parts.length == 4){
             eqparts = [input_parts[input_parts.length-2],input_parts[input_parts.length-1]]
             if (eqparts.includes(NaN) || eqparts.includes(null) || eqparts.includes("")){
                 valid = false
@@ -88,8 +88,8 @@ function calc_phys_val(input){
             return((parseFloat(eqparts[0])*parseFloat(eqparts[1])).toString() + " N")
         }
     }
-    else if ("mass density".includes(input) || input.toLowerCase().includes("mass density") || "density".includes(input) || input.toLowerCase().includes("density")){
-        if (input_parts.length == 3){
+    else if ("mass density".includes(input.toLowerCase()) || input.toLowerCase().includes("mass density") || "density".includes(input.toLowerCase()) || input.toLowerCase().includes("density")){
+        if (input_parts.length == 3 || input_parts.length == 4){
             eqparts = [input_parts[input_parts.length-2],input_parts[input_parts.length-1]]
             if (parseFloat(eqparts[1]) == 0 || parseFloat(eqparts[1]) == NaN){
                 valid = false
@@ -98,7 +98,7 @@ function calc_phys_val(input){
             return ((parseFloat(eqparts[0])/parseFloat(eqparts[1])).toString() + " KgM^(-3)")
         }
     }
-    else if ("frequency".includes(input) || "Hertz".includes(input) || input.toLowerCase().includes("frequency") || input.toLowerCase().includes("Hertz")){
+    else if ("frequency".includes(input.toLowerCase()) || "Hertz".includes(input.toLowerCase()) || input.toLowerCase().includes("frequency") || input.toLowerCase().includes("Hertz")){
         if (input_parts.length == 2){
             eqparts = [input_parts[input_parts.length-1]]
             if (parseFloat(eqparts[0]) == 0 || eqparts[0] == NaN){
