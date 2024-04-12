@@ -117,6 +117,7 @@ function calc_phys_val(type, equation){
 
 function check_visible(input, card){
     console.log("scanning input")
+    print(input)
     if (input.toLowerCase().includes("type")){
         console.log("scanning type")
         return (input.toLowerCase().includes(card.type.toLowerCase()) || card.type.toLowerCase().includes(input.toLowerCase()))
