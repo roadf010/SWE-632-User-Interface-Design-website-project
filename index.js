@@ -120,14 +120,20 @@ function check_visible(input, card){
     print(input)
     if (input.toLowerCase().includes("type")){
         console.log("scanning type")
+        print(input.toLowerCase().includes(card.type.toLowerCase()))
+        print(card.type.toLowerCase().includes(input.toLowerCase()))
         return (input.toLowerCase().includes(card.type.toLowerCase()) || card.type.toLowerCase().includes(input.toLowerCase()))
     }
     else if (input.toLowerCase().includes("field")){
         console.log("scanning field")
+        print(input.toLowerCase().includes(card.field.toLowerCase()))
+        print(card.field.toLowerCase().includes(input.toLowerCase()))
         return (input.toLowerCase().includes(card.field.toLowerCase()) || card.field.toLowerCase().includes(input.toLowerCase()))
     }
     else if (input.toLowerCase().includes("units")){
         console.log("scanning units")
+        print(input.toLowerCase().includes(card.units.toLowerCase()))
+        print(card.units.toLowerCase().includes(input.toLowerCase()))
         return (input.toLowerCase().includes(card.units.toLowerCase()) || card.units.toLowerCase().includes(input.toLowerCase()))
     }
     else{
