@@ -13,7 +13,7 @@ function calc_phys_val(input){
         return null
     }
     input_parts = input.split(" ")
-    if (input_parts.len() == 1){
+    if (input_parts.length() == 1){
         to_solve = input
         if (to_solve.includes("+")){
             sum = 0
