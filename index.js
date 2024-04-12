@@ -56,6 +56,9 @@ function calc_phys_val(input){
             to_solve = to_solve.split("^")
             return to_solve[0]**to_solve[1]
         }
+        else if (parseFloat(input_parts) != NaN){
+            return input_parts
+        }
 
     }
     else if ("mass-energy".includes(input.toLowerCase()) || "joules".includes(input.toLowerCase()) || input.toLowerCase().includes("mass-energy") || input.toLowerCase().includes("joules")){
@@ -138,7 +141,7 @@ searchInput.addEventListener("input", (e) => {
         document.getElementById("math-out").innerHTML = 0
         document.getElementById("math-out").style.color = "black"
     })
-    if (value == "" || value == null || !(value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^"))){
+    if (value == "" || value == null || !(value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^")) || parseFloat(value) != NaN){
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", true)
         })
