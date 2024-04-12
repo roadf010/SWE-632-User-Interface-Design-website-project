@@ -118,25 +118,29 @@ function calc_phys_val(type, equation){
 function check_visible(input, card){
     console.log("scanning input")
     visible = false
+    searched = false
     if (input.toLowerCase().includes("type")){
+        searched = true
         console.log("scanning type")
         console.log(input.toLowerCase().includes(card.type.toLowerCase()))
         console.log(card.type.toLowerCase().includes(input.toLowerCase()))
         visible = (input.toLowerCase().includes(card.type.toLowerCase()) || card.type.toLowerCase().includes(input.toLowerCase()))
     }
     if (input.toLowerCase().includes("field")){
+        searched = true
         console.log("scanning field")
         console.log(input.toLowerCase().includes(card.field.toLowerCase()))
         console.log(card.field.toLowerCase().includes(input.toLowerCase()))
         visible = (input.toLowerCase().includes(card.field.toLowerCase()) || card.field.toLowerCase().includes(input.toLowerCase()))
     }
     if (input.toLowerCase().includes("unit")){
+        searched = true
         console.log("scanning units")
         console.log(input.toLowerCase().includes(card.units.toLowerCase()))
         console.log(card.units.toLowerCase().includes(input.toLowerCase()))
         visible = (input.toLowerCase().includes(card.units.toLowerCase()) || card.units.toLowerCase().includes(input.toLowerCase()))
     }
-    if (!visible){
+    if (!searched){
         console.log("scanning all")
         visible = (input.toLowerCase().includes(card.name.toLowerCase()) || card.name.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.units.toLowerCase()) || card.units.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.field.toLowerCase()) || card.field.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.type.toLowerCase()) || card.type.toLowerCase().includes(input.toLowerCase()))
     }
