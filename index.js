@@ -141,12 +141,12 @@ searchInput.addEventListener("input", (e) => {
         document.getElementById("math-out").innerHTML = 0
         document.getElementById("math-out").style.color = "black"
     })
-    if (value == "" || value == null || !(value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^")) || parseFloat(value) != NaN){
+    if (value == "" || value == null || !(value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^") || parseFloat(value) != NaN)){
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", true)
         })
     } 
-    else if (value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^")){
+    else if (value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^")|| parseFloat(value) != NaN){
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", false)
             
