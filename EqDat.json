@@ -6,8 +6,8 @@
         "type": "equations",
         "field" : "physics",
         "units": "Joules",
+        "result": "Energy",
         "variables": {
-            "result": "Energy",
             "Variable1": "mass",
             "constant1" : "speed of light"
         }
@@ -19,8 +19,8 @@
         "type": "equations",
         "field" : "physics",
         "units": "Newtons",
+        "result": "Force",
         "variables": {
-            "result": "Force",
             "Variable1": "mass",
             "variable2" : "acceleration"
         }
@@ -32,9 +32,7 @@
         "type": "constants",
         "field" : "physics, thermodynamics, quantum mechanics, waves, optics",
         "units": "Meters per Second",
-        "variables": {
-            "result" : "Velocity"
-        }
+        "result" : "Velocity"
     },
     {
         "name": "Gravitational constant",
@@ -43,9 +41,7 @@
         "type": "constants",
         "field" : "physics",
         "units": "Newton Meters squared per Kilograms squared",
-        "variables": {
-            "result" : "Force * distance squared per mass squared"
-        }
+        "result" : "Force * distance squared per mass squared"
     },
     {
         "name": "Mass",
@@ -54,9 +50,7 @@
         "type": "units",
         "field" : "physics, thermodynamics, quantum mechanics",
         "units": "Kilograms",
-        "variables": {
-            "result" : "Mass"
-        }
+        "result" : "Mass"
     },
     {
         "name": "Mass density",
@@ -65,9 +59,7 @@
         "type": "equations",
         "field" : "thermodynamics",
         "units": "Kilogram per meter cubed",
-        "variables": {
-            "result" : "Mass per Volume"
-        }
+        "result" : "Mass per Volume"
     },
     {
         "name": "Planck constant",
@@ -76,9 +68,7 @@
         "type": "constants",
         "field" : "physics, quantum mechanics",
         "units": "Joules per Hertz or Joule-Seconds",
-        "variables": {
-            "result" : "Energy*Seconds"
-        }
+        "result" : "Energy*Seconds"
     },
     {
         "name": "Frequency",
@@ -87,8 +77,8 @@
         "type": "equations",
         "field" : "waves, optics",
         "units": "Hertz ",
+        "result" : "frequency",
         "variables": {
-            "result" : "frequency",
             "Variable1": "time"
         }
     },
@@ -99,8 +89,6 @@
         "type": "units",
         "field" : "waves, optics",
         "units": "1/seconds",
-        "variables": {
-            "result" : "frequency"
-        }
+        "result" : "frequency"
     }
 ]
