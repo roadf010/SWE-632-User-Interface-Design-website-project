@@ -19,7 +19,7 @@ function calc_phys_val(input){
         if (to_solve.includes("+")){
             sum = 0
             to_solve = to_solve.split("+")
-            to_solve.foreach(part=>{
+            to_solve.forEach(part=>{
                 if(parseFloat(part) != NaN){
                     sum = sum + part
                 }
@@ -29,7 +29,7 @@ function calc_phys_val(input){
         else if (to_solve.includes("-")){
             sum = 0
             to_solve = to_solve.split("-")
-            to_solve.foreach(part=>{
+            to_solve.forEach(part=>{
                 if(parseFloat(part) != NaN){
                     sum = sum - part
                 }
@@ -38,7 +38,7 @@ function calc_phys_val(input){
         }
         else if (to_solve.includes("*")){
             to_solve = to_solve.split("*")
-            to_solve.foreach(part=>{
+            to_solve.forEach(part=>{
                 if(parseFloat(part) != NaN){
                     sum = sum * part
                 }
