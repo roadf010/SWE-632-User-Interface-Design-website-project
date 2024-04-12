@@ -133,16 +133,23 @@ function check_visible(input, card){
         console.log(card.field.toLowerCase().includes(input.toLowerCase()))
         visible = (input.toLowerCase().includes(card.field.toLowerCase()) || card.field.toLowerCase().includes(input.toLowerCase()))
     }
-    if (input.toLowerCase().includes("unit") || "field". includes(input.toLowerCase())){
+    if (input.toLowerCase().includes("unit") || "unit". includes(input.toLowerCase())){
         searched = true
         console.log("scanning units")
         console.log(input.toLowerCase().includes(card.units.toLowerCase()))
         console.log(card.units.toLowerCase().includes(input.toLowerCase()))
         visible = (input.toLowerCase().includes(card.units.toLowerCase()) || card.units.toLowerCase().includes(input.toLowerCase()))
     }
+    if (input.toLowerCase().includes("result") || "result". includes(input.toLowerCase())){
+        searched = true
+        console.log("scanning result")
+        console.log(input.toLowerCase().includes(card.units.toLowerCase()))
+        console.log(card.units.toLowerCase().includes(input.toLowerCase()))
+        visible = (input.toLowerCase().includes(card.result.toLowerCase()) || card.result.toLowerCase().includes(input.toLowerCase()))
+    }
     if (!searched){
         console.log("scanning all")
-        visible = (input.toLowerCase().includes(card.name.toLowerCase()) || card.name.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.units.toLowerCase()) || card.units.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.field.toLowerCase()) || card.field.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.type.toLowerCase()) || card.type.toLowerCase().includes(input.toLowerCase()))
+        visible = (input.toLowerCase().includes(card.result.toLowerCase()) || card.result.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.name.toLowerCase()) || card.name.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.units.toLowerCase()) || card.units.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.field.toLowerCase()) || card.field.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.type.toLowerCase()) || card.type.toLowerCase().includes(input.toLowerCase()))
     }
     return visible
 }
