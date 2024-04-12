@@ -117,29 +117,30 @@ function calc_phys_val(type, equation){
 
 function check_visible(input, card){
     console.log("scanning input")
-
+    visible = false
     if (input.toLowerCase().includes("type")){
         console.log("scanning type")
         console.log(input.toLowerCase().includes(card.type.toLowerCase()))
         console.log(card.type.toLowerCase().includes(input.toLowerCase()))
-        return (input.toLowerCase().includes(card.type.toLowerCase()) || card.type.toLowerCase().includes(input.toLowerCase()))
+        visible = (input.toLowerCase().includes(card.type.toLowerCase()) || card.type.toLowerCase().includes(input.toLowerCase()))
     }
-    else if (input.toLowerCase().includes("field")){
+    if (input.toLowerCase().includes("field")){
         console.log("scanning field")
         console.log(input.toLowerCase().includes(card.field.toLowerCase()))
         console.log(card.field.toLowerCase().includes(input.toLowerCase()))
-        return (input.toLowerCase().includes(card.field.toLowerCase()) || card.field.toLowerCase().includes(input.toLowerCase()))
+        visible = (input.toLowerCase().includes(card.field.toLowerCase()) || card.field.toLowerCase().includes(input.toLowerCase()))
     }
-    else if (input.toLowerCase().includes("unit")){
+    if (input.toLowerCase().includes("unit")){
         console.log("scanning units")
         console.log(input.toLowerCase().includes(card.units.toLowerCase()))
         console.log(card.units.toLowerCase().includes(input.toLowerCase()))
-        return (input.toLowerCase().includes(card.units.toLowerCase()) || card.units.toLowerCase().includes(input.toLowerCase()))
+        visible = (input.toLowerCase().includes(card.units.toLowerCase()) || card.units.toLowerCase().includes(input.toLowerCase()))
     }
-    else{
+    if (!visible){
         console.log("scanning all")
-        return (input.toLowerCase().includes(card.name.toLowerCase()) || card.name.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.units.toLowerCase()) || card.units.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.field.toLowerCase()) || card.field.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.type.toLowerCase()) || card.type.toLowerCase().includes(input.toLowerCase()))
+        visible = (input.toLowerCase().includes(card.name.toLowerCase()) || card.name.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.units.toLowerCase()) || card.units.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.field.toLowerCase()) || card.field.toLowerCase().includes(input.toLowerCase())) || (input.toLowerCase().includes(card.type.toLowerCase()) || card.type.toLowerCase().includes(input.toLowerCase()))
     }
+    return visible
 }
 
 searchInput.addEventListener("input", (e) => {
