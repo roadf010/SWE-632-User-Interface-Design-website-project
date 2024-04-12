@@ -21,7 +21,7 @@ function calc_phys_val(input){
             to_solve = to_solve.split("+")
             to_solve.forEach(part=>{
                 if(parseFloat(part) != NaN){
-                    sum = sum + part
+                    sum = sum + parseFloat(part)
                 }
             })
             return sum
@@ -31,7 +31,7 @@ function calc_phys_val(input){
             to_solve = to_solve.split("-")
             to_solve.forEach(part=>{
                 if(parseFloat(part) != NaN){
-                    sum = sum - part
+                    sum = sum - parseFloat(part)
                 }
             })
             return sum
@@ -40,7 +40,7 @@ function calc_phys_val(input){
             to_solve = to_solve.split("*")
             to_solve.forEach(part=>{
                 if(parseFloat(part) != NaN){
-                    sum = sum * part
+                    sum = sum * parseFloat(part)
                 }
             })
             return sum
@@ -51,14 +51,14 @@ function calc_phys_val(input){
                 valid = false
                 return null
             }
-            return to_solve[0]/to_solve[1]
+            return parseFloat(to_solve[0])/parseFloat(to_solve[1])
         }
         else if (to_solve.includes("^")){
             to_solve = to_solve.split("^")
-            return to_solve[0]**to_solve[1]
+            return parseFloat(to_solve[0])**parseFloat(to_solve[1])
         }
         else if (parseFloat(input_parts) != NaN){
-            return input_parts
+            return parseFloat(input_parts)
         }
 
     }
