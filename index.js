@@ -20,7 +20,7 @@ function calc_phys_val(input){
             sum = 0
             to_solve = to_solve.split("+")
             to_solve.forEach(part=>{
-                if(parseFloat(part) != NaN){
+                if(parseFloat(part) != NaN && part != "" && part != null){
                     sum = sum + parseFloat(part)
                 }
             })
@@ -30,7 +30,7 @@ function calc_phys_val(input){
             sum = 0
             to_solve = to_solve.split("-")
             to_solve.forEach(part=>{
-                if(parseFloat(part) != NaN){
+                if(parseFloat(part) != NaN && part != "" && part != null){
                     sum = sum - parseFloat(part)
                 }
             })
@@ -39,7 +39,7 @@ function calc_phys_val(input){
         else if (to_solve.includes("*")){
             to_solve = to_solve.split("*")
             to_solve.forEach(part=>{
-                if(parseFloat(part) != NaN){
+                if(parseFloat(part) != NaN && part != "" && part != null){
                     sum = sum * parseFloat(part)
                 }
             })
@@ -62,14 +62,14 @@ function calc_phys_val(input){
         }
 
     }
-    else if ("mass-energy".includes(input.toLowerCase()) || "joules".includes(input.toLowerCase()) || input.toLowerCase().includes("mass-energy") || input.toLowerCase().includes("joules")){
+    else if ("mass energy".includes(input.toLowerCase()) || "joules".includes(input.toLowerCase()) || input.toLowerCase().includes("mass energy") || input.toLowerCase().includes("joules")){
         if(parseFloat(input_parts) == NaN){
             valid = false
             return null
         }
         return ((parseFloat(input_parts)*(299793458)**2).toString() + " J")
     }
-    else if ("equation of motion".includes(input.toLowerCase()) ||"force".includes(input.toLowerCase()) || input.toLowerCase().includes("equation of motion") ||input.toLowerCase().includes("force")){
+    else if ("motion".includes(input.toLowerCase()) || input.toLowerCase().includes("motion")  || "equation of motion".includes(input.toLowerCase()) || "force".includes(input.toLowerCase()) || input.toLowerCase().includes("equation of motion") || input.toLowerCase().includes("force")){
         eqparts = input_parts.split("*")
         if (eqparts.includes(NaN) || eqparts.includes(null) || eqparts.includes("")){
             valid = false
@@ -77,7 +77,7 @@ function calc_phys_val(input){
         }
         return((parseFloat(eqparts[0])*parseFloat(eqparts[1])).toString() + " N")
     }
-    else if ("mass-density".includes(input) || input.toLowerCase().includes("mass-density")){
+    else if ("mass density".includes(input) || input.toLowerCase().includes("mass density") || "density".includes(input) || input.toLowerCase().includes("density")){
         eqparts = input_parts.split("/")
         if (parseFloat(eqparts[1]) == 0 || parseFloat(eqparts[1]) == NaN){
             valid = false
