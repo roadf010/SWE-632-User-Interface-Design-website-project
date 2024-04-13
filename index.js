@@ -5,6 +5,16 @@ const searchInput = document.querySelector("[data-search]")
 let equations = []
 let calculations = []
 let valid = true
+
+function test_for_target(input, target){
+    input_parts = input.split(" ")
+    input_parts.forEach(part=>{
+        if (part.includes(target) || target.includes(part)){
+            return true
+        }
+    })
+    return false
+}
 function calc_phys_val(input){
     let to_solve = ""
     sum = 1
@@ -124,28 +134,28 @@ function check_visible(input, card){
         console.log("scanning type")
         console.log(input.toLowerCase().includes(card.type.toLowerCase()))
         console.log(card.type.toLowerCase().includes(input.toLowerCase()))
-        visible = (input.toLowerCase().includes(card.type.toLowerCase()) || card.type.toLowerCase().includes(input.toLowerCase()))
+        visible = test_for_target(input.toLowerCase(), card.type.toLowerCase())
     }
     if (input.toLowerCase().includes("field") || "field". includes(input.toLowerCase())){
         searched = true
         console.log("scanning field")
         console.log(input.toLowerCase().includes(card.field.toLowerCase()))
         console.log(card.field.toLowerCase().includes(input.toLowerCase()))
-        visible = (input.toLowerCase().includes(card.field.toLowerCase()) || card.field.toLowerCase().includes(input.toLowerCase()))
+        visible = test_for_target(input.toLowerCase(), card.field.toLowerCase())
     }
     if (input.toLowerCase().includes("unit") || "unit". includes(input.toLowerCase())){
         searched = true
         console.log("scanning units")
         console.log(input.toLowerCase().includes(card.units.toLowerCase()))
         console.log(card.units.toLowerCase().includes(input.toLowerCase()))
-        visible = (input.toLowerCase().includes(card.units.toLowerCase()) || card.units.toLowerCase().includes(input.toLowerCase()))
+        visible = test_for_target(input.toLowerCase(), card.units.toLowerCase())
     }
     if (input.toLowerCase().includes("result") || "result". includes(input.toLowerCase())){
         searched = true
         console.log("scanning result")
         console.log(input.toLowerCase().includes(card.units.toLowerCase()))
-        console.log(card.units.toLowerCase().includes(input.toLowerCase()))
-        visible = (input.toLowerCase().includes(card.results.toLowerCase()) || card.results.toLowerCase().includes(input.toLowerCase()))
+        console.log(card.result.toLowerCase().includes(input.toLowerCase()))
+        visible = test_for_target(input.toLowerCase(), card.result.toLowerCase())
     }
     if (!searched){
         console.log("scanning all")
