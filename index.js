@@ -132,21 +132,21 @@ function check_visible(input, card){
     console.log("scanning input")
     visible = false
     searched = false
-    if (input.toLowerCase().includes("type") || "type". includes(input.toLowerCase())){
+    if (test_for_target(input.toLowerCase(), "type")){
         searched = true
         console.log("scanning type")
         visible = test_for_target(input.toLowerCase(), card.type.toLowerCase())
     }
-    if (input.toLowerCase().includes("field") || "field". includes(input.toLowerCase())){
+    if (test_for_target(input.toLowerCase(), "field")){
         searched = true
         visible = test_for_target(input.toLowerCase(), card.field.toLowerCase())
     }
-    if (input.toLowerCase().includes("unit") || "unit". includes(input.toLowerCase())){
+    if (test_for_target(input.toLowerCase(), "units")){
         searched = true
         console.log("scanning units")
         visible = test_for_target(input.toLowerCase(), card.units.toLowerCase())
     }
-    if (input.toLowerCase().includes("result") || "result". includes(input.toLowerCase())){
+    if (test_for_target(input.toLowerCase(), "result")){
         searched = true
         console.log("scanning result")
         visible = test_for_target(input.toLowerCase(), card.results.toLowerCase())
