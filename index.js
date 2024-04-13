@@ -161,7 +161,7 @@ function check_visible(input, card){
 searchInput.addEventListener("input", (e) => {
     const value = e.target.value.toLowerCase()
     var isVisible = true
-
+    var matches = val.match(/\d+/g)
     equations.forEach(EQ =>{
         isVisible = check_visible(value, EQ)
         EQ.element.classList.toggle("hide", !isVisible)
@@ -177,13 +177,13 @@ searchInput.addEventListener("input", (e) => {
     console.log(!value.includes("/"))
     console.log(!value.includes("^"))
     console.log(parseFloat(value) != NaN)
-    console.log((value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^")))
-    if (value == "" || value == null || !(value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^"))){
+    console.log((value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^")) || matches != null)
+    if (value == "" || value == null || !(value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^") || matches != null)){
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", true)
         })
     } 
-    else if (value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^")){
+    else if (value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^") || matches != null){
         console.log("performing calculation")
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", false)
