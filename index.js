@@ -181,6 +181,7 @@ searchInput.addEventListener("input", (e) => {
         })
     } 
     else if (value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^") || parseFloat(value) != NaN){
+        console.log("performing calculation")
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", false)
         })
