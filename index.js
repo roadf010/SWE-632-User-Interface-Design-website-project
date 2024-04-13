@@ -154,7 +154,7 @@ function check_visible(input, card){
         searched = true
         console.log("scanning result")
         console.log(input.toLowerCase().includes(card.units.toLowerCase()))
-        console.log(card.result.toLowerCase().includes(input.toLowerCase()))
+        console.log(card.results.toLowerCase().includes(input.toLowerCase()))
         visible = test_for_target(input.toLowerCase(), card.results.toLowerCase())
     }
     if (!searched){
