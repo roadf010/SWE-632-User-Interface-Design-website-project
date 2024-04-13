@@ -166,15 +166,14 @@ searchInput.addEventListener("input", (e) => {
         document.getElementById("math-out").style.color = "black"
     })
     console.log(parseFloat(value))
-    if (value == "" || value == null || !(value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^") || parseFloat(value) != NaN || parseFloat(value) != undefined)){
+    if (value == "" || value == null || !(value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^") || parseFloat(value) != undefined)){
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", true)
         })
     } 
-    else if (value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^")|| parseFloat(value) != NaN || parseFloat(value) != undefined){
+    else if (value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^") || parseFloat(value) != undefined){
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", false)
-            
         })
         var result;
         valid = true;
