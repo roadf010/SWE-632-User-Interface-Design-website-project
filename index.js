@@ -205,7 +205,7 @@ fetch("./EqDat.json").then((res) => res.json()).then(data =>{
         body.textContent = element.description
         
         eqCardData.append(card)
-        return{ name : element.name, units: element.units, field: element.field, results: element.variables.result, type: element.type, element: card}
+        return{ name : element.name, units: element.units, field: element.field, results: element.result, type: element.type, element: card}
     });
 })
 fetch("./calculation_content.json").then((res) => res.json()).then(data =>{
