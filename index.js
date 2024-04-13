@@ -166,7 +166,15 @@ searchInput.addEventListener("input", (e) => {
         document.getElementById("math-out").style.color = "black"
     })
     console.log(parseFloat(value))
-    if (value == "" || value == null || !(value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^") || parseFloat(value) != NaN)){
+    console.log(value == "" )
+    console.log(value == null)
+    console.log(!value.includes("+"))
+    console.log(!value.includes("-"))
+    console.log(!value.includes("*"))
+    console.log(!value.includes("/"))
+    console.log(!value.includes("^"))
+    console.log(!parseFloat(value) != NaN)
+    if (value == "" || value == null || !(value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || !value.includes("^") || parseFloat(value) != NaN)){
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", true)
         })
