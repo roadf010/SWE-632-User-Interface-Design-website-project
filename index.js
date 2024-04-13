@@ -8,7 +8,10 @@ let valid = true
 
 function test_for_target(input, target){
     input_parts = input.split(" ")
+    console.log(target)
     input_parts.forEach(part=>{
+        console.log(part)
+
         if (part.includes(target) || target.includes(part)){
             return true
         }
@@ -132,29 +135,20 @@ function check_visible(input, card){
     if (input.toLowerCase().includes("type") || "type". includes(input.toLowerCase())){
         searched = true
         console.log("scanning type")
-        console.log(input.toLowerCase().includes(card.type.toLowerCase()))
-        console.log(card.type.toLowerCase().includes(input.toLowerCase()))
         visible = test_for_target(input.toLowerCase(), card.type.toLowerCase())
     }
     if (input.toLowerCase().includes("field") || "field". includes(input.toLowerCase())){
         searched = true
-        console.log("scanning field")
-        console.log(input.toLowerCase().includes(card.field.toLowerCase()))
-        console.log(card.field.toLowerCase().includes(input.toLowerCase()))
         visible = test_for_target(input.toLowerCase(), card.field.toLowerCase())
     }
     if (input.toLowerCase().includes("unit") || "unit". includes(input.toLowerCase())){
         searched = true
         console.log("scanning units")
-        console.log(input.toLowerCase().includes(card.units.toLowerCase()))
-        console.log(card.units.toLowerCase().includes(input.toLowerCase()))
         visible = test_for_target(input.toLowerCase(), card.units.toLowerCase())
     }
     if (input.toLowerCase().includes("result") || "result". includes(input.toLowerCase())){
         searched = true
         console.log("scanning result")
-        console.log(input.toLowerCase().includes(card.units.toLowerCase()))
-        console.log(card.results.toLowerCase().includes(input.toLowerCase()))
         visible = test_for_target(input.toLowerCase(), card.results.toLowerCase())
     }
     if (!searched){
@@ -167,7 +161,6 @@ function check_visible(input, card){
 searchInput.addEventListener("input", (e) => {
     const value = e.target.value.toLowerCase()
     var isVisible = true
-    var splitval = value.split(" ")
 
     equations.forEach(EQ =>{
         isVisible = check_visible(value, EQ)
