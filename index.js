@@ -161,7 +161,7 @@ function check_visible(input, card){
 searchInput.addEventListener("input", (e) => {
     const value = e.target.value.toLowerCase()
     var isVisible = true
-    var matches = val.match(/\d+/g)
+    var matches = value.match(/\d+/g)
     equations.forEach(EQ =>{
         isVisible = check_visible(value, EQ)
         EQ.element.classList.toggle("hide", !isVisible)
