@@ -9,6 +9,7 @@ body {
   
 .form-container {
     text-align: center;
+    margin: .5rem .5rem;
   }
 .results-container{
     display: flex;
@@ -19,7 +20,7 @@ body {
     border: 1px solid black;
 
     width: 200px;
-    margin: auto .5rem .5rem;
+    margin: auto;
     text-align: center;
 }
 input{
