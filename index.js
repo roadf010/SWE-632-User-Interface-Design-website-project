@@ -172,12 +172,14 @@ searchInput.addEventListener("input", (e) => {
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", true)
         })
+        document.getElementById("card").style.backgroundColor = "rgb(63, 252, 46)"
     } 
     else if (value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^") || matches != null){
         console.log("performing calculation")
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", false)
         })
+        document.getElementById("card").style.backgroundColor = "rgb(46, 252, 218)"
         var result;
         valid = true;
         result = calc_phys_val(value)
@@ -213,6 +215,7 @@ fetch("./EqDat.json").then((res) => res.json()).then(data =>{
 fetch("./calculation_content.json").then((res) => res.json()).then(data =>{
     calculations = data.map(element => {
         const card = eqCardTemplate.content.cloneNode(true).children[0]
+    
         const header = card.querySelector("[data-header]")
         const image = card.querySelector("[data-image]")
         const units = card.querySelector("[data-units]")
