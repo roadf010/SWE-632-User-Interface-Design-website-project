@@ -43,6 +43,13 @@ input{
     margin: .5rem;
     font-size: 1rem;
 }
+.card > .header:after { 
+    border-bottom: 4px solid red; 
+    content: ''; 
+    display: block; 
+    margin-left: 35%; 
+    width: 50%; 
+  } 
 
 .card > .body {
     font-size: .8rem;
