@@ -51,13 +51,22 @@ input{
   } 
 
 .card > .body {
-    font-size: .8rem;
+    font-size: 1rem;
     color:rgb(0, 0, 0);
     margin: .75rem .75rem;
     
     
 }
-
+.card > .image{
+    margin: .5rem;
+    background-color: rgb(63, 252, 46);
+    font-size: .75rem;
+}
+.card > .units{
+    margin: .5rem;
+    background-color: rgb(63, 252, 46);
+    font-size: .75rem;
+}
 
 .hide {
     display: none;
