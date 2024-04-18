@@ -172,14 +172,14 @@ searchInput.addEventListener("input", (e) => {
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", true)
         })
-        document.getElementById("data-EQ-cards").style.backgroundColor = "rgb(63, 252, 46)"
+        calc.element.classList.style.backgroundColor = "rgb(63, 252, 46)"
     } 
     else if (value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^") || matches != null){
         console.log("performing calculation")
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", false)
         })
-        document.getElementById("data-EQ-cards").style.backgroundColor = "rgb(46, 252, 218)"
+        calc.element.classList.style.backgroundColor = "rgb(46, 252, 218)"
         var result;
         valid = true;
         result = calc_phys_val(value)
