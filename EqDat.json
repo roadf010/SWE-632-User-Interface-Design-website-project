@@ -40,7 +40,7 @@
         "description": "physical constant used in the calculation of gravitational interactions",
         "type": "constants",
         "field" : "physics",
-        "units": "Newton Meters squared per Kilograms squared",
+        "units": "Newton Meters^2 per Kilograms^2",
         "result" : "Force * distance squared per mass squared"
     },
     {
@@ -58,7 +58,7 @@
         "description": "Thermodynamic equation for a substance's mass per unit of volume",
         "type": "equations",
         "field" : "thermodynamics",
-        "units": "Kilogram per meter cubed",
+        "units": "Kilogram per meter^3",
         "result" : "Mass per Volume"
     },
     {
