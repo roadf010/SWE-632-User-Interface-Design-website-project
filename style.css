@@ -9,7 +9,6 @@ body {
 .form-container {
     text-align: center;
     margin: .5rem .5rem;
-    width: 200px;
   }
 .results-container{
     display: flex;
