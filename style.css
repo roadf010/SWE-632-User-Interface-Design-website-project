@@ -6,6 +6,12 @@ body {
     background-color: rgb(42, 84, 97);
   }
   
+.p2{
+    font-size: 0.75rem;
+}
+.p3{
+    font-size: 0.5rem;
+}
 .form-container {
     text-align: center;
     margin: .5rem .5rem;
