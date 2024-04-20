@@ -171,14 +171,14 @@ searchInput.addEventListener("input", (e) => {
     if (value == "" || value == null || !(value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^") || matches != null)){
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", true)
-            document.getElementById("data-body").style.backgroundColor = "rgb(63, 252, 46)"
+            document.getElementById("data-EQ-cards").style.backgroundColor = "rgb(63, 252, 46)"
         })
     } 
     else if (value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^") || matches != null){
         console.log("performing calculation")
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", false)
-            document.getElementById("data-body").style.backgroundColor = "rgb(46, 252, 218)"
+            document.getElementById("data-EQ-cards").style.backgroundColor = "rgb(46, 252, 218)"
         })
         var result;
         valid = true;
