@@ -168,22 +168,37 @@ searchInput.addEventListener("input", (e) => {
         document.getElementById("math-out").innerHTML = 0
         document.getElementById("math-out").style.color = "black"
     })
+    var allCards = document.querySelectorAll(".card")
+    var allCardunits = document.querySelectorAll(".units")
+    var allCardimgs = document.querySelectorAll(".image")
     if (value == "" || value == null || !(value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^") || matches != null)){
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", true)
         })
-        document.querySelectorAll(".card").style.backgroundColor = "rgb(63, 252, 46)"
-        document.querySelectorAll(".units").style.backgroundColor = "rgb(63, 252, 46)"
-        document.querySelectorAll(".image").style.backgroundColor = "rgb(63, 252, 46)"
+        allCards.forEach(card =>{
+            card.style.backgroundColor = "rgb(63, 252, 46)"
+        })
+        allCardunits.forEach(unit =>{
+            unit.style.backgroundColor = "rgb(63, 252, 46)"
+        })
+        allCardimgs.forEach(img =>{
+            img.style.backgroundColor = "rgb(63, 252, 46)"
+        })
     } 
     else if (value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^") || matches != null){
         console.log("performing calculation")
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", false)
         })
-        document.querySelectorAll(".card").style.backgroundColor = "rgb(46, 252, 218)"
-        document.querySelectorAll(".units").style.backgroundColor = "rgb(46, 252, 218)"
-        document.querySelectorAll(".image").style.backgroundColor = "rgb(46, 252, 218)"
+        allCards.forEach(card =>{
+            card.style.backgroundColor = "rgb(46, 252, 218)"
+        })
+        allCardunits.forEach(unit =>{
+            unit.style.backgroundColor = "rgb(46, 252, 218)"
+        })
+        allCardimgs.forEach(img =>{
+            img.style.backgroundColor = "rgb(46, 252, 218)"
+        })
         var result;
         valid = true;
         result = calc_phys_val(value)
