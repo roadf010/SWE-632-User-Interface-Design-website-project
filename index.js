@@ -172,18 +172,18 @@ searchInput.addEventListener("input", (e) => {
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", true)
         })
-        document.querySelector(".card").style.backgroundColor = "rgb(63, 252, 46)"
-        document.querySelector(".header").style.backgroundColor = "rgb(63, 252, 46)"
-        document.querySelector(".image").style.backgroundColor = "rgb(63, 252, 46)"
+        document.querySelectorAll(".card").style.backgroundColor = "rgb(63, 252, 46)"
+        document.querySelectorAll(".units").style.backgroundColor = "rgb(63, 252, 46)"
+        document.querySelectorAll(".image").style.backgroundColor = "rgb(63, 252, 46)"
     } 
     else if (value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^") || matches != null){
         console.log("performing calculation")
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", false)
         })
-        document.querySelector(".card").style.backgroundColor = "rgb(46, 252, 218)"
-        document.querySelector(".header").style.backgroundColor = "rgb(46, 252, 218)"
-        document.querySelector(".image").style.backgroundColor = "rgb(46, 252, 218)"
+        document.querySelectorAll(".card").style.backgroundColor = "rgb(46, 252, 218)"
+        document.querySelectorAll(".units").style.backgroundColor = "rgb(46, 252, 218)"
+        document.querySelectorAll(".image").style.backgroundColor = "rgb(46, 252, 218)"
         var result;
         valid = true;
         result = calc_phys_val(value)
