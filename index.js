@@ -159,6 +159,12 @@ function check_visible(input, card){
 }
 
 searchInput.addEventListener("input", (e) => {
+    var ids = document.querySelectorAll('[id]');
+
+    Array.prototype.forEach.call( ids, function( el, i ) {
+    // "el" is your element
+        console.log( el.id ); // log the ID
+    });
     const value = e.target.value.toLowerCase()
     var isVisible = true
     var matches = value.match(/\d+/g)
@@ -171,14 +177,14 @@ searchInput.addEventListener("input", (e) => {
     if (value == "" || value == null || !(value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^") || matches != null)){
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", true)
-            document.getElementById("data-EQ-cards").style.backgroundColor = "rgb(63, 252, 46)"
+            //document.getElementById("data-EQ-cards").style.backgroundColor = "rgb(63, 252, 46)"
         })
     } 
     else if (value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^") || matches != null){
         console.log("performing calculation")
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", false)
-            document.getElementById("data-EQ-cards").style.backgroundColor = "rgb(46, 252, 218)"
+            //document.getElementById("data-EQ-cards").style.backgroundColor = "rgb(46, 252, 218)"
         })
         var result;
         valid = true;
