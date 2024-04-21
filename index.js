@@ -171,6 +171,7 @@ searchInput.addEventListener("input", (e) => {
     var allCards = document.querySelectorAll(".card")
     var allCardunits = document.querySelectorAll(".units")
     var allCardimgs = document.querySelectorAll(".image")
+    var allCardheads = document.querySelectorAll(".header")
     if (value == "" || value == null || !(value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^") || matches != null)){
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", true)
@@ -183,6 +184,9 @@ searchInput.addEventListener("input", (e) => {
         })
         allCardimgs.forEach(img =>{
             img.style.backgroundColor = "rgb(63, 252, 46)"
+        })
+        allCardheads.forEach(head =>{
+            head.style.backgroundColor = "rgb(63, 252, 46)"
         })
     } 
     else if (value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^") || matches != null){
@@ -198,6 +202,9 @@ searchInput.addEventListener("input", (e) => {
         })
         allCardimgs.forEach(img =>{
             img.style.backgroundColor = "rgb(46, 252, 218)"
+        })
+        allCardheads.forEach(head =>{
+            head.style.backgroundColor = "rgb(46, 252, 218)"
         })
         var result;
         valid = true;
