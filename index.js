@@ -171,7 +171,7 @@ searchInput.addEventListener("input", (e) => {
     var allCards = document.querySelectorAll(".card")
     var allCardunits = document.querySelectorAll(".units")
     var allCardimgs = document.querySelectorAll(".image")
-    var allCardheads = document.querySelectorAll(".header")
+    var allCardheads = document.querySelectorAll(".card.header")
     if (value == "" || value == null || !(value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^") || matches != null)){
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", true)
