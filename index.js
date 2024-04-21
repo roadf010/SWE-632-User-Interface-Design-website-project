@@ -224,7 +224,7 @@ searchInput.addEventListener("input", (e) => {
 fetch("./EqDat.json").then((res) => res.json()).then(data =>{
     equations = data.map(element => {
         const card = eqCardTemplate.content.cloneNode(true).children[0]
-        const header = card.querySelector("[data-header]")
+        const header = card.querySelector("[data-title]")
         const image = card.querySelector("[data-image]")
         const units = card.querySelector("[data-units]")
         const body = card.querySelector("[data-body]")
