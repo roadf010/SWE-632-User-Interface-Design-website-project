@@ -171,7 +171,7 @@ searchInput.addEventListener("input", (e) => {
     var allCards = document.querySelectorAll(".card")
     var allCardunits = document.querySelectorAll(".units")
     var allCardimgs = document.querySelectorAll(".image")
-    var allCardheads = document.querySelectorAll(".card.header")
+    var allCardheads = document.querySelectorAll(".title")
     if (value == "" || value == null || !(value.includes("+") || value.includes("-") || value.includes("*") || value.includes("/") || value.includes("^") || matches != null)){
         calculations.forEach(calc =>{
             calc.element.classList.toggle("hide", true)
@@ -242,7 +242,7 @@ fetch("./calculation_content.json").then((res) => res.json()).then(data =>{
     calculations = data.map(element => {
         const card = eqCardTemplate.content.cloneNode(true).children[0]
     
-        const header = card.querySelector("[data-header]")
+        const header = card.querySelector("[data-title]")
         const image = card.querySelector("[data-image]")
         const units = card.querySelector("[data-units]")
         const body = card.querySelector("[data-body]")
